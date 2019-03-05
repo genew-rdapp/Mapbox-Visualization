@@ -206,6 +206,7 @@ function getMapStyle(mapContainer) {
     if (mapContainer == undefined) {
         mapContainer = 'map';
     }
+    mapboxgl.accessToken = 'pk.eyJ1IjoieWFteSIsImEiOiJjanI2MDlxMDkwazl4NDNwaG5iMjJ3czBxIn0.AobOEFxFlQpsx1GCoHb-Aw';
     return {
         container: mapContainer,
         center: [121.14753291842118, 31.540494022433435],

@@ -65,71 +65,14 @@
     <div id='chart'>
         <img src='../res/img/charts.png'>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script type="text/javascript" include="bootstrap" src="../js/include-web.js"></script>
     <script type="text/javascript" include="echarts,echarts-gl" src="../js/mapboxgl/include-mapboxgl.js"></script>
     <script type="text/javascript" src="../js/taicang.js"></script>
+    <script src="../js/map-vue.js"></script>
+    <script src="../js/facility-vue.js"></script>
     <script type="text/javascript">
-        mapboxgl.accessToken = 'pk.eyJ1IjoieWFteSIsImEiOiJjanI2MDlxMDkwazl4NDNwaG5iMjJ3czBxIn0.AobOEFxFlQpsx1GCoHb-Aw';
-
-        var dataURL = "../res/data/hotels.json";
-
-        /* var smallMapBox = new mapboxgl.Map({
-            container: 'smallMap',
-            style: 'mapbox://styles/yamy/cjsebldkr212e1fpo9jr55no6',
-            center: [121.14753291842118, 31.540494022433435],
-            zoom: 8.5,
-            pitch: 0,
-            bearing: 0,
-        });
-        smallMapBox.on('load', function () {
-            addSmallPolygon(smallMapBox, mapbox);
-        }); */
-
-
-
-        var mapbox = new mapboxgl.Map(getMapStyle());
-        mapbox.addControl(new mapboxgl.NavigationControl(), 'top-left');
-
-        //添加太仓区划图层（含区划线、区划面、区划名称三个图层）
-
-        mapbox.on('load', function () {
-            console.log("map loaded");
-            addPolygon(mapbox);
-
-            var rivers = [
-                '1',
-                '2',
-                '3',
-                '4',
-                '8'
-            ];
-
-            rivers.forEach(function (river) {
-                var layerName = 'rivers-' + river;
-                var riverLayerButton = document.createElement('button');
-                riverLayerButton.innerText = layerName;
-                riverLayerButton.addEventListener('click', function () {
-                    if (mapbox.getPaintProperty(layerName, 'line-color') == 'red') {
-                        mapbox.setPaintProperty(layerName, 'line-color', '#00448E');
-                        return;
-                    }
-                    mapbox.setPaintProperty(layerName, 'line-color', 'red');
-                });
-                divLayers.appendChild(riverLayerButton);
-
-                addLineLayer(mapbox, layerName, '../res/data/rivers.json', '#00448E', ['==', ['get', 'DISPCLASS'], river]);
-            });
-
-            addSymbolLayer(mapbox, 'polygon-symbol', '../res/data/taicang-polygonName.json', '../res/img/polygonInfo.png');
-
-            addCircleLayer(mapbox, 'project-circle', dataURL, 'rgb(255,60,60)');
-            //addSymbolLayer(mapbox,'project-symbol',dataURL,'../res/img/zhazhan1.png');
-
-            var roam = document.getElementById('btnRoam');
-            roam.addEventListener('click', function () {
-                roamSymbols(mapbox, 'project-circle');
-            });
-        });
+        
     </script>
 </body>
 <style>

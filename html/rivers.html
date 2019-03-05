@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .map-overlay {
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            position: absolute;
+            width: 200px;
+            top: 0;
+            left: 150;
+            padding: 10px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" include="bootstrap" src="../js/include-web.js"></script>
+    <script type="text/javascript" include="echarts,echarts-gl" src="../js/mapboxgl/include-mapboxgl.js"></script>
+    <script type="text/javascript" src="../js/taicang.js"></script>
+</head>
+
+<body>
+    <div id='map'></div>
+    <div id="app" class='map-overlay top'>
+        <ul>
+            <li v-for="river in rivers">
+                <input name="river" type="checkbox" value="" v-model="river.show" v-on:click="selectRiver(river)">
+                {{ river.name }}</input>
+            </li>
+        </ul>
+    </div>
+    <script src="../js/map-vue.js"></script>
+    <script src="../js/river-vue.js"></script>
+</body>
+
+</html>
