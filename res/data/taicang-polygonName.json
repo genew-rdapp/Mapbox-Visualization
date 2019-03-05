@@ -1,0 +1,110 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    121.27307191685338,
+                    31.51365209220772
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "NAME": "浏河镇",
+                "UserID": 0,
+                "address": ""
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.18505336239406,
+                    31.480342628030087
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "NAME": "陆渡镇",
+                "UserID": 0,
+                "address": ""
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.1097312882572,
+                    31.458999497378798
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "NAME": "城厢镇",
+                "UserID": 0,
+                "address": ""
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.04025360589128,
+                    31.476846491468038
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "NAME": "双凤镇",
+                "UserID": 0,
+                "address": ""
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.06717782035662,
+                    31.57736999005769
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "NAME": "沙溪镇",
+                "UserID": 0,
+                "address": ""
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.21589651606007,
+                    31.607287216971457
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "NAME": "浮桥镇",
+                "UserID": 0,
+                "address": ""
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.10240337441002,
+                    31.68936718741162
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "NAME": "璜泾镇",
+                "UserID": 0,
+                "address": ""
+            },
+            "type": "Feature"
+        }
+    ]
+}

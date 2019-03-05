@@ -1,0 +1,157 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "geometry": {
+                "coordinates": [
+                    121.0932544691023,
+                    31.44133622432072
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ADDRESS": "江苏省苏州市太仓市城西南路7号",
+                "LAT": "31.445786",
+                "LNG": "121.104333",
+                "NAME": "星海商务大厦",
+                "TELEPHONE": "",
+                "USER_UID": "551969a8e48486b038e4a6c8",
+                "UserID": 0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.1082301991113,
+                    31.44230995533743
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ADDRESS": "人民南路36号",
+                "LAT": "31.446485",
+                "LNG": "121.119377",
+                "NAME": "圣德商务大厦",
+                "TELEPHONE": "",
+                "USER_UID": "e93761f6f482640c223bf26c",
+                "UserID": 0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.1082518789677,
+                    31.44251428227260
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ADDRESS": "人民南路36号",
+                "LAT": "31.446689",
+                "LNG": "121.119399",
+                "NAME": "圣德商务大厦-东北门",
+                "TELEPHONE": "",
+                "USER_UID": "8620b6bacd4c2f236c20b963",
+                "UserID": 0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.1203549667285,
+                    31.45233558337369
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ADDRESS": "苏州市太仓市上海东路77号",
+                "LAT": "31.456302",
+                "LNG": "121.131555",
+                "NAME": "五洋国际商务大厦",
+                "TELEPHONE": "",
+                "USER_UID": "75c24d3e720bd89bd5b74e88",
+                "UserID": 0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.1204570554909,
+                    31.45199020877813
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ADDRESS": "苏州市太仓市上海东路77号五洋国际商务大厦12层",
+                "LAT": "31.455955",
+                "LNG": "121.131657",
+                "NAME": "苏州康纳斯压缩机贸易有限公司(五洋国际商务大厦南)",
+                "TELEPHONE": "",
+                "USER_UID": "dc599a9ced85c6b10bf5ebab",
+                "UserID": 0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.1206067591918,
+                    31.45192938830549
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ADDRESS": "江苏省苏州市太仓市上海东路77号汉庭酒店(太仓五洋广场店)附近",
+                "LAT": "31.455892",
+                "LNG": "121.131807",
+                "NAME": "停车场(五洋国际商务大厦西北)",
+                "TELEPHONE": "",
+                "USER_UID": "bfe76cfc88f02f0bf7231007",
+                "UserID": 0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.1207017261752,
+                    31.45277138608931
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ADDRESS": "上海东路77号2幢附近",
+                "LAT": "31.456733",
+                "LNG": "121.131903",
+                "NAME": "停车场(五洋国际商务大厦东)",
+                "TELEPHONE": "",
+                "USER_UID": "19d3d55f318019622a02e109",
+                "UserID": 0
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    121.1133261622950,
+                    31.46054204459508
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ADDRESS": "仓南路西",
+                "LAT": "31.464628",
+                "LNG": "121.124511",
+                "NAME": "骏园SOHO商务楼",
+                "TELEPHONE": "",
+                "USER_UID": "8c7c28ad13f5c4cc1c389432",
+                "UserID": 0
+            },
+            "type": "Feature"
+        }
+    ]
+}

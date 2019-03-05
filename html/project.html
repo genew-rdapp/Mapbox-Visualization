@@ -1,0 +1,164 @@
+<!--********************************************************************
+* Copyright© 2000 - 2018 SuperMap Software Co.Ltd. All rights reserved.
+*********************************************************************-->
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title data-i18n="太仓智慧水利平台-工程项目"></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .mapboxgl-popup {
+            background-color: transparent
+        }
+
+        .mapboxgl-popup-content {
+            background: 'rgba(123,127,255,0)'
+        }
+    </style>
+</head>
+
+<body>
+    <div id='map'></div>
+    <script type="text/javascript" include="bootstrap" src="../js/include-web.js"></script>
+    <script type="text/javascript" include="echarts,echarts-gl" src="../js/mapboxgl/include-mapboxgl.js"></script>
+    <script type="text/javascript" src="../js/taicang.js"></script>
+    <script type="text/javascript">
+        mapboxgl.accessToken = 'pk.eyJ1IjoieWFteSIsImEiOiJjanI2MDlxMDkwazl4NDNwaG5iMjJ3czBxIn0.AobOEFxFlQpsx1GCoHb-Aw';
+
+        var projectDataURL = "../res/data/taicang-project.json";
+        var myChart = echarts.init(document.getElementById('map'));
+
+        $.getJSON(projectDataURL, function (projectData) {
+            myChart.setOption({
+                visualMap: {
+                    show: false,
+                    calculable: true,
+                    realtime: false,
+                    inRange: {
+                        color: ['white', '#0191F7', 'yellow', '#FF5E0D', 'green']
+                    },
+                    outOfRange: {
+                        colorAlpha: 0
+                    },
+                    max: 100,
+                    min: 0
+                },
+                toolBox: {
+                    feature: {
+                        dataZoom: {
+                            show: true,
+                        }
+                    }
+                },
+                mapbox: getMapStyle(),
+                series: [{
+                    name: 'layer-project',
+                    type: 'bar3D',
+                    roam: true,
+                    shading: 'realistic',
+                    coordinateSystem: 'mapbox',
+                    barSize: 0.6,
+                    silent: false,
+                    data: projectData,
+                    animation: true,
+                    bevelSize: 1,
+                    bevelSmoothness: 5,
+                    minHeight: 40,
+                    // label: {
+                    //     show: true,
+                    //     textStyle: {
+                    //         color: 'black',
+                    //         borderColor: 'black',
+                    //         borderWidth: 2,
+                    //     },
+                    //     formatter: '{b}',
+                    // },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            textStyle: {
+                                color: 'red'
+                            }
+                        }
+                    }
+                }],
+                tooltip: {
+                    show: true,
+                    triggerOn: 'click',
+                    formatter: '<div><h1>{b}</h1></div><div><a href="http://www.baidu.com">点击详情</a></div>'
+                }
+            });
+
+            //获取mapbox对象
+            var mapbox = myChart.getModel().getComponent('mapbox3D').getMapbox();
+            mapbox.addControl(new mapboxgl.NavigationControl(), 'top-left');
+            //添加太仓区划图层（含区划线、区划面、区划名称三个图层）
+            addPolygon(mapbox);
+            addFillExtrusionLayer(mapbox, 'polygon-extrusion', '../res/data/taicang-polygon.json', 'polygon-name');
+
+            mapbox.on("click", function (e) {
+                console.log(e.lngLat + '\tpitch:' + mapbox.getPitch() + '\tzoom:' + mapbox.getZoom());
+            });
+
+            addLayerPopup(mapbox, 'polygon-name', function (e) {
+
+                var div = document.createElement('div');
+                var waterValue = document.createElement('h1');
+
+                div.appendChild(waterValue);
+                div.className = 'popup-content';
+                waterValue.className = 'popup-water-value';
+
+                var value = 250;
+                waterValue.innerText = value;
+
+                setInterval(() => {
+                    waterValue.innerHTML = (value++) + 'mm';
+                }, 1000);
+                return div;
+            });
+        });
+
+    </script>
+</body>
+<style>
+    .mapboxgl-popup {
+        background-color: transparent
+    }
+
+    .mapboxgl-popup-content {
+        max-width: 0;
+        background: transparent
+    }
+
+    .mapboxgl-popup-tip {
+        visibility: collapse
+    }
+
+    .popup-content {
+        background: url(../res/img/zhazhanInfo.png);
+        width: 280;
+        height: 170;
+    }
+
+    .popup-water-value {
+        font-size: 40;
+        color: white;
+        margin-left: 130;
+        padding-top: 45;
+    }
+</style>
+
+</html>

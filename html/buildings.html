@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>Display buildings in 3D</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <script type="text/javascript" src="../js/taicang.js"></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaHVvaHVsaTAwOCIsImEiOiJjanM3Z3B1eHMwNG0zNDRtajhhcXNnanQwIn0.7gLFPHv_tXytt_JYLMze4w';
+        var map = new mapboxgl.Map({
+            style: 'mapbox://styles/mapbox/dark-v9',
+            center: [-74.0066, 40.7135],
+            zoom: 15.5,
+            pitch: 45,
+            bearing: -17.6,
+            container: 'map',
+            postEffect: {
+                enable: true,
+                screenSpaceAmbientOcclusion: {
+                    enable: true,
+                    intensity: 1.2,
+                    radius: 6,
+                    quality: 'low'
+                },
+                screenSpaceReflection: {
+                    enable: true
+                }
+            },
+            light: {
+                anchor: 'map',
+                color: 'red',
+                intensity: 10,
+                main: {
+                    intensity: 15,
+                    shadow: true,
+                    shadowQuality: 'high'
+                },
+                ambient: {
+                    intensity: 10
+                },
+                ambientCubemap: {
+                    texture: '../res/hdr/taxiRoutesOfCapeTown.hdr',
+                    exposure: 2,
+                    diffuseIntensity: 10,
+                    specularIntensity: 20
+                }
+            }
+        });
+
+        // The 'building' layer in the mapbox-streets vector source contains building-height
+        // data from OpenStreetMap.
+        map.on('load', function () {
+            // Insert the layer beneath any symbol layer.
+            var layers = map.getStyle().layers;
+
+            var labelLayerId;
+            for (var i = 0; i < layers.length; i++) {
+                if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+                    labelLayerId = layers[i].id;
+                    break;
+                }
+            }
+
+            map.addLayer({
+                'id': '3d-buildings',
+                'source': 'composite',
+                'source-layer': 'building',
+                'filter': ['==', 'extrude', 'true'],
+                'type': 'fill-extrusion',
+                'minzoom': 15,
+                'paint': {
+                    'fill-extrusion-color': '#aaa',
+
+                    // use an 'interpolate' expression to add a smooth transition effect to the
+                    // buildings as the user zooms in
+                    'fill-extrusion-height': [
+                        "interpolate", ["linear"], ["zoom"],
+                        15, 0,
+                        15.05, ["get", "height"]
+                    ],
+                    'fill-extrusion-base': [
+                        "interpolate", ["linear"], ["zoom"],
+                        15, 0,
+                        15.05, ["get", "min_height"]
+                    ],
+                    'fill-extrusion-opacity': .3
+                }
+            }, labelLayerId);
+
+            /* addLayerPopup(map, '3d-buildings', function (e) {
+
+                var div = document.createElement('div');
+
+                var img = document.createElement('img');
+                img.src = '../data/taicang/zhazhanInfo.png';
+                div.appendChild(img);
+
+                return div;
+            }); */
+        });
+
+        map.on('click',function(e){
+            console.log(e.lngLat);
+
+            new mapboxgl.Marker()
+                .setLngLat(e.lngLat)
+                .addTo(map);
+        });
+    </script>
+
+</body>
+<style>
+    .mapboxgl-popup {
+        background-color: transparent
+    }
+
+    .mapboxgl-popup-content {
+        max-width: 0;
+        background: transparent
+    }
+
+    .mapboxgl-popup-tip {
+        visibility: collapse
+    }
+
+    .popup-content {
+        background: url(../res/data/img/zhazhanInfo.png);
+        width: 270;
+        height: 170;
+    }
+
+    .popup-water-value {
+        font-size: 40;
+        color: black;
+        margin-left: 130;
+        padding-top: 45;
+    }
+</style>
+
+</html>
